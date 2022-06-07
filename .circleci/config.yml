@@ -10,7 +10,7 @@ orbs:
   continuation: circleci/continuation@0.3.1
 
 jobs:
-  say-hello:
+  generate-merged-yaml:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
@@ -21,13 +21,13 @@ jobs:
       - checkout
       - run:
           name: "Generate config.yml"
-          command: "yq eval-all '. as $item ireduce ({}; . * $item )' ./ios/config.yml ./android/config.yml"
+          command: "yq eval-all '. as $item ireduce ({}; . * $item )' ./ios/config.yml ./android/config.yml > merged.yml"
       - continuation/continue:
-          configuration_path: "generated_config.yml"
+          configuration_path: "merged.yml"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  say-hello-workflow:
+  setup-workflow:
     jobs:
-      - say-hello
+      - generate-merged-yaml
