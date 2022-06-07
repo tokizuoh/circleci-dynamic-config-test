@@ -21,9 +21,9 @@ jobs:
       - checkout
       - run:
           name: "Generate config.yml"
-          command: "echo Hello, World!"
+          command: "yq eval-all '. as $item ireduce ({}; . * $item )' config.yml"
       - continuation/continue:
-          configuration_path: ""
+          configuration_path: "generated_config.yml"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
