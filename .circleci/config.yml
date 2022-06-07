@@ -21,7 +21,7 @@ jobs:
       - checkout
       - run:
           name: "Generate config.yml"
-          command: "yq eval-all '. as $item ireduce ({}; . * $item )' config.yml"
+          command: "yq eval-all '. as $item ireduce ({}; . * $item )' ./ios/config.yml ./android/config.yml"
       - continuation/continue:
           configuration_path: "generated_config.yml"
 
