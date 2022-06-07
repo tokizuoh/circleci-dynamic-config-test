@@ -4,6 +4,11 @@ version: 2.1
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
+setup: true
+
+orbs: 
+  continuation: circleci/continuation@0.3.1
+
 jobs:
   say-hello:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
@@ -15,8 +20,10 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Say hello"
+          name: "Generate config.yml"
           command: "echo Hello, World!"
+      - continuation/continue:
+          configuration_path: ""
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
