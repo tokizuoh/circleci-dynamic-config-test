@@ -13,4 +13,4 @@ jobs:
 workflows:
   say-hello-ios-workflow:
     jobs:
-      - say-hello-ios
+      - say-hello

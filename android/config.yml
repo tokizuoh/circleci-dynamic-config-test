@@ -13,4 +13,4 @@ jobs:
 workflows:
   say-hello-android-workflow:
     jobs:
-      - say-hello-android
+      - say-hello
