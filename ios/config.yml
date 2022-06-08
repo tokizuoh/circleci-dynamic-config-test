@@ -9,6 +9,22 @@ jobs:
       - run:
           name: "Say hello"
           command: "echo iOS!"
+  say-hello-1:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - run:
+          name: "Say hello"
+          command: "echo 1"
+  say-hello-2:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - run:
+          name: "Say hello"
+          command: "echo iOS!"
 
 workflows:
   say-hello-workflow:
