@@ -11,6 +11,6 @@ jobs:
           command: "echo Android!"
 
 workflows:
-  say-hello-android-workflow:
+  say-hello-workflow:
     jobs:
       - say-hello

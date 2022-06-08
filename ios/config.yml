@@ -11,6 +11,6 @@ jobs:
           command: "echo iOS!"
 
 workflows:
-  say-hello-ios-workflow:
+  say-hello-workflow:
     jobs:
       - say-hello
