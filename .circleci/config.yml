@@ -23,8 +23,8 @@ jobs:
           name: "Generate config.yml"
           command: "yq eval-all '. as $item ireduce ({}; . * $item )' ./ios/config.yml ./android/config.yml > merged.yml"
       - run:
-          name: "cat marged.yml"
-          command: "cat marged.yml"
+          name: "cat merged.yml"
+          command: "cat merged.yml"
       - continuation/continue:
           configuration_path: "merged.yml"
 
