@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  say-hello-android:
+  say-hello:
     docker:
       - image: cimg/base:stable
     steps:
