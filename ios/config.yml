@@ -15,9 +15,9 @@ jobs:
     steps: # a series of commands to run
       - checkout  # pull down code from your version control system.
       - run:
-          name: Run Unit Tests
-          command: xcodebuild test -scheme circleci-demo-macos
-    
+          name: "xcodebuild -version"
+          command: xcodebuild -version
+
 # parameters:
 #   hoge:
 #     type: boolean
