@@ -37,7 +37,7 @@ jobs:
 parameters:
   ios_run_test:
     type: boolean
-    default: false
+    default: true
 
 workflows:
   say-hello-workflow:
