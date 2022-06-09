@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  path-filtering: circleci/path-filtering@0.1.3
+
 jobs:
   android-job:
     docker:
@@ -8,9 +11,12 @@ jobs:
       - checkout
       - run:
           name: "cat hoge.txt"
-          command: cat ./ios/hoge.txt
+          command: cat ./android/hoge.txt
 
 workflows:
   run-android-job:
     jobs:
+      - path-filtering/filter:
+        config-path: merged.yml
+        mapping: ./android/.* true
       - android-job
