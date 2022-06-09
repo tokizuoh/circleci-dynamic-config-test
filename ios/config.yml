@@ -1,32 +1,16 @@
 version: 2.1
 
 jobs:
-  # echo-hoge:
-  #   docker:
-  #     - image: cimg/base:stable
-  #   steps:
-  #     - checkout
-  #     - run:
-  #         name: "Run Test"
-  #         command: echo << pipeline.parameters.hoge >>
-  test: # your job name
-    macos:
-      xcode: 12.5.1 # indicate your selected version of Xcode
-    steps: # a series of commands to run
-      - checkout  # pull down code from your version control system.
+  ios-job:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
       - run:
-          name: "xcodebuild -version"
-          command: xcodebuild -version
-
-# parameters:
-#   hoge:
-#     type: boolean
-#     default: true
+          name: "cat hoge.txt"
+          command: cat ./ios/hoge.txt
 
 workflows:
-  # run_hoge:
-  #   jobs:
-  #     - echo-hoge
-  run_test:
+  run-ios-job:
     jobs:
-      - test
+      - ios-job

@@ -1,16 +1,16 @@
 version: 2.1
 
 jobs:
-  android-say-hello:
+  android-job:
     docker:
       - image: cimg/base:stable
     steps:
       - checkout
       - run:
-          name: "Say hello"
-          command: "echo Android!"
+          name: "cat hoge.txt"
+          command: cat ./ios/hoge.txt
 
 workflows:
-  say-hello-workflow:
+  run-android-job:
     jobs:
-      - android-say-hello
+      - android-job
