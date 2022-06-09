@@ -1,58 +1,21 @@
 version: 2.1
 
 jobs:
-  say-hello:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - checkout
-      - run:
-          name: "Say hello"
-          command: "echo iOS!"
-  say-hello-1:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - checkout
-      - run:
-          name: "Say hello"
-          command: "echo 1"
-  say-hello-2:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - checkout
-      - run:
-          name: "Say hello"
-          command: "echo iOS!"
-  test:
+  echo-hoge:
     docker:
       - image: cimg/base:stable
     steps:
       - checkout
       - run:
           name: "Run Test"
-          command: "echo TEST!"
+          command: echo << pipeline.parameters.ios_run_test >>
     
 parameters:
-  ios_run_test:
-    type: boolean
-    default: true
   hoge:
     type: boolean
     default: true
 
 workflows:
-  say-hello-workflow:
+  run_hoge:
     jobs:
-      - say-hello
-  say-hello-1-workflow:
-    jobs:
-      - say-hello-1
-  say-hello-2-workflow:
-    jobs:
-      - say-hello-2
-  run_test:
-    when: << pipeline.parameters.ios_run_test >>
-    jobs:
-      - test
+      - echo-hoge
