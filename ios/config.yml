@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run:
           name: "Run Test"
-          command: echo << pipeline.parameters.ios_run_test >>
+          command: echo << pipeline.parameters.hoge >>
     
 parameters:
   hoge:
