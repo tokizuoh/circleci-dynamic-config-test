@@ -38,6 +38,9 @@ parameters:
   ios_run_test:
     type: boolean
     default: true
+  hoge:
+    type: boolean
+    default: true
 
 workflows:
   say-hello-workflow:
