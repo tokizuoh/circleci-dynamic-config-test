@@ -1,21 +1,32 @@
 version: 2.1
 
 jobs:
-  echo-hoge:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - checkout
+  # echo-hoge:
+  #   docker:
+  #     - image: cimg/base:stable
+  #   steps:
+  #     - checkout
+  #     - run:
+  #         name: "Run Test"
+  #         command: echo << pipeline.parameters.hoge >>
+  test: # your job name
+    macos:
+      xcode: 12.5.1 # indicate your selected version of Xcode
+    steps: # a series of commands to run
+      - checkout  # pull down code from your version control system.
       - run:
-          name: "Run Test"
-          command: echo << pipeline.parameters.hoge >>
+          name: Run Unit Tests
+          command: xcodebuild test -scheme circleci-demo-macos
     
-parameters:
-  hoge:
-    type: boolean
-    default: true
+# parameters:
+#   hoge:
+#     type: boolean
+#     default: true
 
 workflows:
-  run_hoge:
+  # run_hoge:
+  #   jobs:
+  #     - echo-hoge
+  run_test:
     jobs:
-      - echo-hoge
+      - test
