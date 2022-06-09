@@ -18,5 +18,6 @@ workflows:
     jobs:
       - path-filtering/filter:
         config-path: merged.yml
-        mapping: ./android/.* true
+        mapping: |
+          ./android/.* true
       - android-job
