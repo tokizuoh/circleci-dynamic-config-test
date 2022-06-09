@@ -25,6 +25,19 @@ jobs:
       - run:
           name: "Say hello"
           command: "echo iOS!"
+  test:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - run:
+          name: "Run Test"
+          command: "echo TEST!"
+    
+parameters:
+  ios_run_test:
+    type: boolean
+    default: false
 
 workflows:
   say-hello-workflow:
@@ -36,3 +49,7 @@ workflows:
   say-hello-2-workflow:
     jobs:
       - say-hello-2
+  run_test:
+    when: << pipeline.parameters.ios_run_test >>
+    jobs:
+      - test
