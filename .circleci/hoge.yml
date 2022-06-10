@@ -1,0 +1,22 @@
+version: 2.1
+
+parameters:
+  build-server:
+    type: boolean
+    default: false
+
+jobs:
+  hoge-job:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - run:
+          name: "echo hoge"
+          command: echo hoge
+
+workflows:
+  build-server:
+    when: << pipeline.parameters.build-server >>
+    jobs:
+      - hoge-job
