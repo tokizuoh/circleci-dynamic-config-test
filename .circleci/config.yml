@@ -24,6 +24,7 @@ jobs:
           command: "cat merged.yml"
       - continuation/continue:
           # parameters: "{\"ios-manual\":true}"
+          parameters: "test.json"
           configuration_path: "merged.yml"
 
 workflows:
