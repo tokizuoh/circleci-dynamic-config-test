@@ -5,10 +5,10 @@ setup: true
 orbs: 
   continuation: circleci/continuation@0.3.1
 
-# parameters:
-#   ios-manual:
-#     type: boolean
-#     default: false
+parameters:
+  ios-manual:
+    type: boolean
+    default: false
 
 jobs:
   generate-merged-yaml:
@@ -25,6 +25,9 @@ jobs:
           name: "cat merged.yml"
           command: "cat merged.yml"
       - continuation/continue:
+          parametes: {
+            "ios-manual":pipeline.parameters.ios-manual
+          }
           configuration_path: "merged.yml"
 
 workflows:
