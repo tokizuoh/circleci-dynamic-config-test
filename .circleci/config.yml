@@ -5,10 +5,10 @@ setup: true
 orbs: 
   continuation: circleci/continuation@0.3.1
 
-parameters:
-  ios-manual:
-    type: boolean
-    default: false
+# parameters:
+#   ios-manual:
+#     type: boolean
+#     default: false
 
 jobs:
   generate-merged-yaml:
@@ -16,6 +16,8 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
+      - continuation/continue:
+          parameters
       - run:
           name: "Generate config.yml"
           command: "yq eval-all '. as $item ireduce ({}; . * $item )' ./ios/circleci.yml ./android/circleci.yml > merged.yml"
