@@ -16,8 +16,6 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
-      - continuation/continue:
-          parameters
       - run:
           name: "Generate config.yml"
           command: "yq eval-all '. as $item ireduce ({}; . * $item )' ./ios/circleci.yml ./android/circleci.yml > merged.yml"
@@ -25,7 +23,7 @@ jobs:
           name: "cat merged.yml"
           command: "cat merged.yml"
       - continuation/continue:
-          parametes: "{\"ios-manual\":\"true\"}"
+          parameters: "{\"ios-manual\":\"true\"}"
           configuration_path: "merged.yml"
 
 workflows:
