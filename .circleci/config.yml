@@ -25,7 +25,7 @@ jobs:
           name: "cat merged.yml"
           command: "cat merged.yml"
       - continuation/continue:
-          parametes: "{"ios-manual":pipeline.parameters.ios-manual}"
+          parametes: "{\"ios-manual\":pipeline.parameters.ios-manual}"
           configuration_path: "merged.yml"
 
 workflows:
