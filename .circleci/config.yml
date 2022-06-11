@@ -13,7 +13,7 @@ jobs:
       - checkout
       - run:
           name: "Generate config.yml"
-          command: "yq eval-all '. as $item ireduce ({}; . * $item )' ./ios/config.yml ./android/config.yml > merged.yml"
+          command: "yq eval-all '. as $item ireduce ({}; . * $item )' ./ios/circleci.yml ./android/circleci.yml > merged.yml"
       - run:
           name: "cat merged.yml"
           command: "cat merged.yml"
