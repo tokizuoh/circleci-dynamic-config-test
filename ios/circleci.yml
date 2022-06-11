@@ -1,16 +1,14 @@
 version: 2.1
 
 jobs:
-  say-hello-ios:
+  ios-job:
     docker:
       - image: cimg/base:stable
     steps:
       - checkout
-      - run:
-          name: "Say hello"
-          command: "echo iOS!"
+      - run: command: "echo iOS!"
 
 workflows:
-  say-hello-ios-workflow:
+  ios-workflow:
     jobs:
-      - say-hello-ios
+      - ios-job

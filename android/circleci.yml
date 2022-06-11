@@ -1,16 +1,14 @@
 version: 2.1
 
 jobs:
-  say-hello-android:
+  android-job:
     docker:
       - image: cimg/base:stable
     steps:
       - checkout
-      - run:
-          name: "Say hello"
-          command: "echo Android!"
+      - run: "echo Android!"
 
 workflows:
-  say-hello-android-workflow:
+  android-workflow:
     jobs:
-      - say-hello-android
+      - android-job
