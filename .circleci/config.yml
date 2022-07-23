@@ -19,7 +19,6 @@ jobs:
           name: "cat merged.yml"
           command: "cat merged.yml"
       - continuation/continue:
-
           configuration_path: "merged.yml"
 
 workflows:
