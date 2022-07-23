@@ -12,8 +12,8 @@ jobs:
     steps:
       - checkout
       - run:
-        name: "hoge"
-        command: "ls"
+          name: "hoge"
+          command: "ls"
       - run:
           name: "merge YAML"
           command: |
