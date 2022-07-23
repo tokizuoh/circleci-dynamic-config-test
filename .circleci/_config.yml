@@ -1,0 +1,29 @@
+version: 2.1
+
+setup: true
+
+orbs: 
+  continuation: circleci/continuation@0.3.1
+
+parameters:
+  run-ios-workflow:
+    type: boolean
+    default: false
+
+jobs:
+  generate-merged-yaml:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - run:
+          name: "merge YAML"
+          command: |
+            yq eval-all '. as $item ireduce ({}; . * $item )' ./ios/config.yml ./android/config.yml > ./merged.yml
+      - continuation/continue:
+          configuration_path: "merged.yml"
+
+workflows:
+  setup-workflow:
+    jobs:
+      - generate-merged-yaml
