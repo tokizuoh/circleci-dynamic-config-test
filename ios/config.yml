@@ -1,7 +1,7 @@
 version: 2.1
 
 parameters:
-  ios-manual:
+  run-ios-workflow:
     type: boolean
     default: false
 
@@ -15,6 +15,6 @@ jobs:
 
 workflows:
   ios-workflow:
-    when: << pipeline.parameters.ios-manual >>
+    when: << pipeline.parameters.run-ios-workflow >>
     jobs:
       - ios-job
