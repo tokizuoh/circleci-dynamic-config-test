@@ -14,7 +14,7 @@ jobs:
       - run:
           name: "merge YAML"
           command: |
-            "yq eval-all '. as $item ireduce ({}; . * $item )' ./ios/circleci.yml ./android/circleci.yml > merged.yml"
+            "yq eval-all '. as $item ireduce ({}; . * $item )' ./ios/config.yml ./android/config.yml > merged.yml"
       - run:
           name: "cat merged.yml"
           command: "cat merged.yml"
