@@ -1,0 +1,30 @@
+version: 2.1
+jobs:
+  android-job:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - run: "echo Android!"
+workflows:
+  android-workflow:
+    jobs:
+      - android-job
+---
+version: 2.1
+parameters:
+  ios-manual:
+    type: boolean
+    default: false
+jobs:
+  ios-job:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - run: "echo iOS!"
+workflows:
+  ios-workflow:
+    when: << pipeline.parameters.ios-manual >>
+    jobs:
+      - ios-job
